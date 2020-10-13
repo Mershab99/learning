@@ -11,7 +11,7 @@ services:
             - POSTGRES_PASSWORD=pass
     web:
         build: .
-        command: python manage.py runserver 0.0.0.0:8000
+        command: python serviceProject/manage.py runserver 0.0.0.0:8000
         tty: true
         volumes:
             - .:/code
