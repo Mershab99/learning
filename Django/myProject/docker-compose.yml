@@ -6,7 +6,7 @@ services:
         ports:
             - "5432:5432"
         environment: 
-            - POSTGRES_DB=cannamaps_db
+            - POSTGRES_DB=learning_db
             - POSTGRES_USER=admin
             - POSTGRES_PASSWORD=pass
     web:

@@ -77,7 +77,7 @@ WSGI_APPLICATION = 'serviceProject.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'cannamaps_db',
+        'NAME': 'learning_db',
         'USER': 'admin',
         'PASSWORD': 'pass',
         'HOST': 'db',
