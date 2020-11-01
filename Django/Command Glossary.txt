@@ -9,3 +9,8 @@ python manage.py startapp app_name
 
 python manage.py makemigrations
 python manage.py migrate
+
+
+#DATABASE COMMANDS
+modelName.objects.all()
+modelName.objects.get(id=pk)
