@@ -1,5 +1,6 @@
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
+from rest_framework.parsers import FileUploadParser
 
 from db.models import User
 
@@ -32,6 +33,7 @@ def userDetail(request, pk):
 
 @api_view(['POST'])
 def userCreate(request):
+    parser_class = (FileUploadParser,)
     serializer = UserSerializer(data=request.data)
 
     if serializer.is_valid():
