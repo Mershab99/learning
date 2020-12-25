@@ -2,3 +2,8 @@ FIND IP ADDRESS OF CONTAINER
 docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' container_name_or_id
 WINDOWS
 docker inspect -f "{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}" container_name_or_id
+
+
+PI IMAGE BUILDER
+
+docker buildx build -t mershab99/IMAGENAME --platform linux/arm/v7,linux/amd64 --push .
