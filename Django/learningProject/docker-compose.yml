@@ -12,6 +12,7 @@ services:
     web:
         build: .
         command: python learningProj/manage.py runserver 0.0.0.0:8000
+        image: mershab99/expense-logger
         tty: true
         volumes:
             - .:/code

@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: expense-logger
+  labels:
+    app: web
+spec:
+  containers:
+    - name: db
+      image: postgres
+      env:
+      - name: POSTGRES_DB
+        value: learning_db
+      - name: POSTGRES_USER
+        value: admin
+      - name: POSTGRES_PASSWORD
+        value: pass
+      ports:
+        - containerPort: 5432
+    - name: api
+      image: mershab99/expense-logger
+      ports:
+        - containerPort: 8000

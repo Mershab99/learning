@@ -7,3 +7,5 @@ docker inspect -f "{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}" con
 PI IMAGE BUILDER
 
 docker buildx build -t mershab99/IMAGENAME --platform linux/arm/v7,linux/amd64 --push .
+
+docker buildx build --tag mershab99/expense-logger:latest --platform linux/amd64,linux/arm/v7,linux/arm64 .
