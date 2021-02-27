@@ -1,0 +1,48 @@
+version: '3'
+
+services:
+    server:
+      image: nginx
+      container_name: nginx_srv
+      volumes:
+        - ./NGINX/nginx.conf:/etc/nginx/nginx.conf
+      depends_on:
+        - learning-service
+        - mongodb
+      ports:
+       - 80:80
+       
+    mongodb:
+        image: mongo
+        container_name: mongodb
+        ports:
+          - 27017:27017
+        environment:
+          MONGO_INITDB_ROOT_USERNAME: learning
+          MONGO_INITDB_ROOT_PASSWORD: test123
+        volumes:
+          - /data/pit-0:/data/db
+          - /data/logs/mongodb:/logs
+        restart: on-failure
+
+    learning-service:
+        build:
+          context: ./service
+        image: learning_service:latest
+        environment:
+          - MONGO_HOST=mongodb
+          - MONGO_PORT=27017
+          - MONGO_USERNAME=learning
+          - MONGO_PASSWORD=test123
+          - LOG_FOLDER=/logs
+          - MONGO_DB=dev
+          - PORT=8000
+        volumes:
+            - ./service:/code
+            - /data/logs/api:/logs
+        depends_on:
+            - mongodb
+        ports:
+          - 8000:8000
+
+

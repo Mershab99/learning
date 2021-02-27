@@ -1,0 +1,37 @@
+version: "3.8"
+
+services:
+    canna-mongodb:
+        image: mongo
+        ports:
+          - 27017:27017
+        environment:
+          - MONGO_INITDB_ROOT_USERNAME: testing
+          - MONGO_INITDB_ROOT_PASSWORD: test123
+        volumes:
+          - /data/pit-0:/data/db
+          - /data/logs/mongodb:/logs
+    api:
+        build: .
+        image: cannamaps-service_web:latest
+        environment:
+          - MONGO_HOST=canna-mongodb
+          - MONGO_PORT=27017
+          - MONGO_USERNAME=testing
+          - MONGO_PASSWORD=test123
+          - LOG_FOLDER=/logs
+          - MONGO_DB=temp_db
+        volumes:
+            - .:/code
+        depends_on:
+            - canna-mongodb
+        volumes:
+          - /data/logs/api:/logs
+          ports:
+            - 8000:8000
+          networks:
+            - mongo_net
+networks:
+  mongo_net:
+    driver: bridge
+
