@@ -1,0 +1,15 @@
+version: '3.7'
+services:
+  rabbitmq:
+    image: rabbitmq:3.8.3-management-alpine
+    hostname: rabbitmq
+    environment:
+      RABBITMQ_DEFAULT_USER: praizl
+      RABBITMQ_DEFAULT_PASS: stoufville
+    volumes:
+      - /data/rabbitmq/0:/var/lib/rabbitmq
+      - /data/rabbitmq/logs:/var/log/rabbitmq
+    ports:
+      - 5672:5672
+      - 15672:15672
+# curl -u user:user -X PUT http://rabbitmq:15672/api/vhosts/rabbit
