@@ -1,0 +1,6 @@
+version: '3'
+services: 
+  mc-client:
+    image: acaranta/docker-minecraft-client
+    ports:
+      - 5900:5900
