@@ -1,0 +1,38 @@
+version: '3'
+
+services:
+    server:
+        image: portainer/portainer
+        container_name: portianer
+        volumes:
+            - /var/run/docker.sock:/var/run/docker.sock
+            - /mnt/storage/portainer/:/data
+        depends_on:
+            - learning-service
+            - mongodb
+        ports:
+        - 9000:80
+        restart: always
+        networks:
+        - traffic_net
+
+version: '3'
+
+services:
+    server:
+        image: portainer/portainer
+        container_name: portainer
+        volumes:
+            - /var/run/docker.sock:/var/run/docker.sock
+            - /mnt/storage/portainer/:/data/
+        ports:
+            - 9000:9000
+            - 8000:8000
+        restart: always
+
+
+
+
+
+
+
